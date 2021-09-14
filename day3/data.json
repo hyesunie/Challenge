@@ -1,0 +1,49 @@
+{
+	"type": "sk",
+	"name": "Yong",
+	"childNode": [
+		{
+			"type": "sk",
+			"name": "hary",
+			"childNode": [
+				{
+					"type": "kt",
+					"name": "happy",
+					"childNode": [{ "type": "kt", "name": "sor", "childNode": [] }]
+				}
+			]
+		},
+		{
+			"type": "kt",
+			"name": "roa",
+			"childNode": [{ "type": "sk", "name": "solvin", "childNode": [] }]
+		},
+		{
+			"type": "kt",
+			"name": "cheche",
+			"childNode": [
+				{
+					"type": "kt",
+					"name": "blak",
+					"childNode": [
+						{ "type": "kt", "name": "node", "childNode": [] },
+						{
+							"type": "kt",
+							"name": "switch",
+							"childNode": [
+								{
+									"type": "sk",
+									"name": "hani",
+									"childNode": [
+										{ "type": "kt", "name": "ruru", "childNode": [] }
+									]
+								}
+							]
+						}
+					]
+				},
+				{ "type": "sk", "name": "chulsu", "childNode": [] }
+			]
+		}
+	]
+}
