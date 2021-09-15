@@ -19,3 +19,13 @@ Array.prototype.customMap = function (callback, thisArg) {
 
 //리듀스 -> 콜백에서 디스참조해서 장난쳐보기!! 포문의 종료조건이 바뀌기 떄문에 확인해보기
 module.exports.cutomMap = this.cutomMap;
+
+// Array.prototype.customMap = function(callback, _this) {
+//   const ret = [];
+//
+//   for (let i = 0; i < this.length; i++) {
+//     ret.push(callback.call(_this, this[i], i, this));
+//   }
+//
+//   return ret;
+// };
