@@ -1,15 +1,15 @@
 ## 숙제
 
-- [ ] `customReduce` 사용해서 1,2번 다시 풀기
+- [x] `customReduce` 사용해서 1,2번 다시 풀기
 
 ---
 
 ## 자가점검
 
-- [ ] nested object (중첩된 객체) 탐색을 익혔는가
-- [ ] `reduce`, `map`, `forEach`, `filter` 에 익숙해졌는가
+- [x] nested object (중첩된 객체) 탐색을 익혔는가
+- [x] `reduce`, `map`, `forEach`, `filter` 에 익숙해졌는가
 - [ ] 프로토타입에 대해 학습했는가
-- [ ] 재귀호출에 대해 학습했는가
+- [x] 재귀호출에 대해 학습했는가
   
 ---
 
