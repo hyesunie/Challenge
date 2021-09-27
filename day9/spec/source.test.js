@@ -23,6 +23,8 @@ test("should support filtering of arrays", function () {
 });
 
 asyncExecution();
+// 여기에 로직이 있으면 비동기를 동기로 실행한것이 깨짐
+// 그래서 즉시실행함수를 이용해서 해보자!
 
 async function asyncExecution() {
   await asyncTest();

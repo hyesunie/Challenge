@@ -43,15 +43,19 @@ const assert = {
     if (result) return true;
     throw "false";
 
+    // object 지원하도록
     function recur(data1, data2) {
       if (typeof data1 !== typeof data2 || data1.length !== data2.length)
         return false;
 
       for (let i = 0; i < data1.length; i++) {
         const isEqual = data1[i] === data2[i] ? true : false;
+        // const isEqual = data1[i] === data2[i];
 
         if (isEqual) continue;
 
+        // if 안 if 하나로 만들기.
+        // return !A || B
         if (typeof data1[i] === "object" || typeof data2[i] === "object") {
           if (!recur(data1[i], data2[i])) return false;
         } else {
