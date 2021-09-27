@@ -3,6 +3,7 @@ const Observable = require("./Observable.js");
 function TodoModel(todoList) {
   Observable.call(this);
   this.todoInfo = [...todoList];
+  // this.todoInfo = todoList.slice();
 }
 
 // const ob = new Observable();
@@ -19,9 +20,21 @@ TodoModel.prototype.constructor = TodoModel;
 // };
 //arrow 함수 실행 시 안되는데
 
+// function bad(str1, str2, str3);
+
+// function intel({id, todo}){}
+
+// intel({})
+
 TodoModel.prototype.add = function (id, inputData) {
+// TodoModel.prototype.add = function ({id, todo, tags}) {
+  // 1. 자동완성(intellisense 사용 가능)ㅣ;
+  // 변수 또는 함수명에 타입 넣지않도록 노력해보기!
+// TodoModel.prototype.add = function (id, [todo, tags]) {
+  //
   const todo = inputData[0];
   const stringTags = inputData[1] ? inputData[1] : null;
+  // const [todo, stringTags] = inputData
   const newTodoInfo = [...this._getTodoInfo()];
 
   if (stringTags) {
@@ -56,13 +69,15 @@ TodoModel.prototype.delete = function (id) {
 
 TodoModel.prototype.getMatchedIdInfo = function (id) {
   const currentTodoInfo = this._getTodoInfo();
-  const matchedTodoInfo = currentTodoInfo.find((e) => e.id == id);
-  return matchedTodoInfo;
+  return currentTodoInfo.find((e) => e.id == id);
 };
 
 TodoModel.prototype.printInputMsg = function (msg) {
-  console.log(msg, "\n");
+  console.log(msg, "\n"); // + this.SOMETHING
 };
+
+// todoModel.printInputMsg();
+// console.log
 
 TodoModel.prototype.printCurrentState = function () {
   const currentTodoInfo = this._getTodoInfo();
@@ -94,6 +109,8 @@ TodoModel.prototype.printSelectAction = function (action) {
   });
 
   console.log(printMsg, "\n");
+  // console.log(`${printMsg}\n`);
+
 };
 
 TodoModel.prototype.printInputError = function () {

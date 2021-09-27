@@ -23,7 +23,9 @@ class TodoHtmlView {
       </body>
     </html>
     `;
-    const pathname = path.resolve(__filename, "../", "../", "../html/log.html");
+    // 경로 수정해보쎼요!
+    const pathname = path.resolve(__filename, "../../../html/log.html");
+    // sync 랑 async 차이 왜있는지... 시간나면 어쓍크 해보쎄여!
     fs.writeFileSync(pathname, html, function (err) {
       console.log(err);
     });
