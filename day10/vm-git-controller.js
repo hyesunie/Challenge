@@ -70,6 +70,9 @@ class VmGitController {
   _processAdd([fileName], repositoryName) {
     const state = "STAGE";
     const area = "STAGE";
+
+    // this.vmGitModel.update('id', {state:"STAGE", area:"STAGE"})
+
     this.vmGitModel.modifyStateOfFile(repositoryName, fileName, state);
     this.vmGitModel.modifyAreaOfFile(repositoryName, fileName, area);
     this.vmGitModel.modifyTimeOfFile(repositoryName, fileName);

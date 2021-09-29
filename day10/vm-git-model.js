@@ -2,6 +2,7 @@ class VmGitModel {
   _local = [];
   _remote = [];
 
+  // 형용사로 사용하기?
   STATE_NAME = {
     UNTRACK: "untracked",
     STAGE: "staged",
@@ -100,6 +101,16 @@ class VmGitModel {
 
     this._setLocal(currentLocal);
   }
+
+  // update(id, newItem){
+  //   const itemIdx = this._findByIndex(id);
+  //
+  //   this._local[itemIdx] = {...this._local[itemIdx],...newItem};
+  // }
+  //
+  // _findByIndex(id){
+  //   return this._local.findIndex(item=>item.id===id);
+  // }
 
   modifyTimeOfFile(repositoryName, fileName) {
     const currentLocal = this._getLocal();

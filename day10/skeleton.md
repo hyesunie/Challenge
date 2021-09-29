@@ -16,13 +16,13 @@ init() {
   - [x] init : 레파지토리 생성
   - [x] checkout : 레파지토리 변경, 지정 ** 이 값을 유지하고 있어야함 (컨트롤러 변수 필요함),
   - [x] new :file -> 저장소에 새 파일 추가(state: untracked, area: working dirctory)
-  - [] status : checkout 변수로 레파지토리가 지정돼 있는 경우 -> 현재 저장소 area 별로 파일 목록과 파일의 변경 시간
-     - [] 로컬일 경우와 리모트일 경우를 분리해야함
+  - [ ] status : checkout 변수로 레파지토리가 지정돼 있는 경우 -> 현재 저장소 area 별로 파일 목록과 파일의 변경 시간
+     - [ ] 로컬일 경우와 리모트일 경우를 분리해야함
   - [x] add : 해당 파일의 상태: staged, area: staging area
   - [x] commit : staging area에 있는 모든 파일의 상태를 변경 => state: unmodified, area: git repository
-  - [] touch : state: modified, area: working directory
-  - [] log : 커밋로그와 함께 커밋한 파일과 시간을 출력
-  - [] push : remote로 복사 (local의 레파지토리 내용)
+  - [ ] touch : state: modified, area: working directory
+  - [ ] log : 커밋로그와 함께 커밋한 파일과 시간을 출력
+  - [ ] push : remote로 복사 (local의 레파지토리 내용)
 
 2. 멤버변수
   - currentRepository : 현재 레파지토리를 갖고 있어야 함!! 초기값은 null 
@@ -31,9 +31,9 @@ init() {
 
 # model
 1. 모델의 멤버변수를 가공해서 컨트롤러에 넘기고, 컨트롤러에서 원하는 데이터를 멤버변수에 추가하도록
-  - [] `createFile` 함수 레포 네임 없을 경우 생각하고 구현하기
-  - [] `existRepositoryName` 레포 이름이 없는 경우 로거로 출력하기
-  - [] 
+  - [ ] `createFile` 함수 레포 네임 없을 경우 생각하고 구현하기
+  - [ ] `existRepositoryName` 레포 이름이 없는 경우 로거로 출력하기
+  - [ ] 
 
 2. 멤버변수
   - local = [{repository, fileList(state, area, mTime), commitList}]
@@ -44,4 +44,3 @@ init() {
 
 # logger
 1. 프린트 함수 모음!!
-   
