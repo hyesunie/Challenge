@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>YAYA Cafe</h1>
+    <div class="barista-container">
+        <form method="post" class="barista-form">
+            <label for="barista">바리스타 인원:</label>
+            <input type="text" id="barista">
+            <input type="submit" value="설정">
+        </form>
+        <p>오늘 출근한 바리스타는 0명입니다.</p>
+    </div>
+    <div class="order-container">
+        <h3>Cafe Menu</h3>
+        <form method="post" class="order-form">
+            <div class="order-form__americano">
+                <label for="americano">아메리카노 주문:</label>
+                <input type="text" id="americano">
+            </div>
+            <div class="order-form__latte">
+                <label for="latte">라떼 주문:</label>
+                <input type="text" id="latte">
+            </div>
+            <div class="order-form__frappuccino">
+                <label for="frappuccino">프라프치노 주문:</label>
+                <input type="text" id="frappucino">
+            </div>
+            <br>
+            <input type="submit" value="주문">
+        </form>
+    </div>
+    <ul class="result-list">
+                
+    </ul>
+    <script type="module" src="main.js"></script>
+</body>
+</html>
