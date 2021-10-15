@@ -29,6 +29,8 @@ export default class CafeApp {
 
     this._orderForm.addEventListener("submit", (e) => {
       e.preventDefault();
+      // full name 을 쓰자!!
+      // 두번쨰!: 0 1 2 인덱스에 값이 있는거를 보장을 못하기때문에 요론고는 예외처리 필수!
       this.orderMenu.ame = e.target[0].value;
       this.orderMenu.latte = e.target[1].value;
       this.orderMenu.fra = e.target[2].value;
@@ -38,6 +40,7 @@ export default class CafeApp {
         this.orderMenu,
         this.resultList,
       ]);
+
       e.target[0].value = "";
       e.target[1].value = "";
       e.target[2].value = "";
