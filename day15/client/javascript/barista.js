@@ -1,6 +1,7 @@
 class Barista {
   _menuTime = { 1: 3000, 2: 4000, 3: 10000 };
   _barista = 0;
+  _baristaState = [];
   constructor(myEmitter) {
     this.myEmitter = myEmitter;
     this._runtInitEventListener();
@@ -13,27 +14,35 @@ class Barista {
     });
     this.myEmitter.on("initBarista", () => {
       for (let i = 1; i <= this._barista; i++) {
-        this.myEmitter.emit("nextMenu", i, "hello");
+        const state = this._baristaState[i] === "working" ? true : false;
+
+        if (!state) {
+          this._baristaState[i] = "working";
+          this.myEmitter.emit("nextMenu", i, "hello", 2);
+        }
       }
     });
   }
 
   _createBarista(num) {
     for (let i = 1; i <= num; i++) {
-      this.myEmitter.on(i, (id, menu) => {
+      this._baristaState = new Array(num).fill("notWorking");
+      this.myEmitter.on(i, (id, menu, menuIdx) => {
         if (menu === "end") {
-          this.myEmitter.emit("end");
+          this._baristaState[i] = "resting";
+          this.myEmitter.emit("end", id);
         } else {
-          this._makeOrderMenu(id, menu);
+          this._makeOrderMenu(id, menu, menuIdx);
         }
       });
     }
   }
 
-  _makeOrderMenu(id, menu) {
-    // console.log(`barista${id} : Start ${menu}`);
+  _makeOrderMenu(id, menu, menuIdx) {
+    this.myEmitter.emit("startMenu", id, menu, menuIdx);
+
     setTimeout(() => {
-      this.myEmitter.emit("nextMenu", id, menu);
+      this.myEmitter.emit("nextMenu", id, menu, 1, menuIdx);
     }, this._menuTime[menu]);
   }
 

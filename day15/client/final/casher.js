@@ -1,21 +1,22 @@
 const readline = require("readline");
 
-class Cashier {
+class Casher {
+  orderId = 0;
   constructor(myEmitter) {
     this.myEmitter = myEmitter;
+    this.initEventListener();
   }
 
+  initEventListener() {}
+
   run() {
-    this.myEmitter.on("processEnd", () => {
-      process.exit();
-    });
     const rl = readline.createInterface({
       input: process.stdin,
       output: process.stdout,
     });
     rl.question("바리스타 수를 입력해주세요.\n", (input) => {
       console.log(`${input}명의 바리스타가 근무를 합니다.\n`);
-      this.myEmitter.emit("setBarista", input);
+      this.myEmitter.emit("Casher:setBarista", input);
       this._recieveCommandLine(rl);
     });
   }
@@ -34,13 +35,19 @@ class Cashier {
             return acc;
           }, {});
 
-        const orderInfo = { nickname, order: orderObj };
+        const orderInfo = {
+          id: this.orderId,
+          nickname,
+          order: orderObj,
+          completion: "no",
+        };
 
-        this.myEmitter.emit("addOrder", orderInfo);
+        this.orderId++;
+        this.myEmitter.emit("Casher:addOrder", orderInfo);
         this._recieveCommandLine(rl);
       }
     );
   }
 }
 
-module.exports = Cashier;
+module.exports = Casher;

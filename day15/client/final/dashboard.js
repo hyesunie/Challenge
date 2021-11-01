@@ -4,16 +4,18 @@ const path = require("path");
 class Dashboard {
   constructor(myEmitter) {
     this.myEmitter = myEmitter;
-    this._runEventListener();
+    this.initEventListener();
   }
 
-  _runEventListener() {
-    this.myEmitter.on("successMenu", (orderHistory) => {
-      const message = orderHistory.reduce((acc, cur) => {
-        acc += `<h2>${cur.nickname}의 주문 현황</h2>
+  initEventListener() {
+    this.myEmitter.on("CafeInfo:updateInfo", (orderList) => {
+      const message = orderList.reduce((acc, cur) => {
+        acc += `<h2>${cur.id}-${cur.nickname}의 주문 현황</h2>
           <h4>아메리카노 주문 : ${this.makeDrinkState(cur.order[1])}</h4>
           <h4>라떼 주문 : ${this.makeDrinkState(cur.order[2])}</h4>
           <h4>프라푸치노 주문 : ${this.makeDrinkState(cur.order[3])} </h4>
+          <br>
+          <h3>주문 완성 여부 : ${cur.completion}</h3>
           <br>`;
         return acc;
       }, "");
@@ -47,7 +49,7 @@ class Dashboard {
   }
 
   makeDrinkState(arr) {
-    console.log(arr);
+    if (arr === undefined) return "no order";
     arr = arr.map((e) => {
       if (e === "success") {
         return "○";
