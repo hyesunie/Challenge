@@ -1,6 +1,9 @@
 const dns = require("dns");
 const net = require("net");
 const URL = require("./url");
+const Request = require("./request");
+const Response = require("./response");
+const ResponseView = require("./response-view");
 
 function main(inputUrl) {
   const url = new URL(inputUrl);
@@ -12,8 +15,7 @@ function main(inputUrl) {
     client.setEncoding("utf-8");
     try {
       client.connect({ port: 80, host: address }, () => {
-        console.log("connected");
-        manage(client, url);
+        manage(client, inputUrl);
       });
     } catch (e) {
       console.log("catch ", e);
@@ -22,21 +24,24 @@ function main(inputUrl) {
 }
 
 function manage(client, url) {
-  // const Request = new Request(url.host, { method: "GET" });
-  // console.log(Request);
-
-  // const request = "GET / http/1.1";
+  let test = [];
   client.on("error", function (err) {
     console.log("client Socket Error: " + err);
   });
   client.on("data", (data) => {
-    console.log(data);
+    test.push(data);
+    const response = new Response(data);
+    const view = new ResponseView(response.getBody());
+    view.updateView();
   });
-  const req =
-    "GET / HTTP/1.1\r\nAccept: */*\r\nHost: zum.com\r\nUser-Agent: Mozilla/5.0\r\nConnection: keep-alive\r\n\r\n";
 
-  const suc = client.write(req);
-  console.log(suc);
+  const request = new Request(url, {
+    "User-Agent": "PostmanRuntime/7.28.3",
+    Connection: "keep-alive",
+  });
+  console.log(request.stringfy());
+
+  client.write(request.stringfy());
 }
 
-main("http://zum.com");
+main("http://www.naver.com/");
